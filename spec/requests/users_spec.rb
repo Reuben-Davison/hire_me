@@ -90,7 +90,10 @@ RSpec.describe "/users", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          name: "Robby",
+          email: "robby@gmail.com"
+        }
       }
 
       it "updates the requested user" do
@@ -112,7 +115,7 @@ RSpec.describe "/users", type: :request do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         user = User.create! valid_attributes
         patch user_url(user), params: { user: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to redirect_to(user_url)
       end
     end
   end

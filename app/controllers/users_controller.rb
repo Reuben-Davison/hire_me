@@ -34,7 +34,8 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_url(@user), notice: "User was successfully updated." 
     else
-      redirect_to user_url(@user), notice:"User could not be updated"
+      redirect_to "/users/#{@user.id}/edit",
+      notice: "User could not be updated"
     end
   end
 

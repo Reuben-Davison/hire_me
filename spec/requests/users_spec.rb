@@ -17,12 +17,15 @@ RSpec.describe "/users", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+  let(:valid_attributes) { 
+    {name: "Robby",
+    email: "robby@gmail.com"}
+    # skip("Add a hash of attributes valid for your model")
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {email: 12 }
+    # skip("Add a hash of attributes invalid for your model")
   }
 
   describe "GET /index" do
@@ -87,14 +90,17 @@ RSpec.describe "/users", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          name: "Robby",
+          email: "rob@gmail.com"
+        }
       }
 
       it "updates the requested user" do
         user = User.create! valid_attributes
         patch user_url(user), params: { user: new_attributes }
         user.reload
-        skip("Add assertions for updated state")
+        expect(user.email).to eq(new_attributes[:email])
       end
 
       it "redirects to the user" do
@@ -109,7 +115,7 @@ RSpec.describe "/users", type: :request do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         user = User.create! valid_attributes
         patch user_url(user), params: { user: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to redirect_to(user_url)
       end
     end
   end

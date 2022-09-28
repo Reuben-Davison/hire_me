@@ -92,7 +92,7 @@ RSpec.describe "/users", type: :request do
       let(:new_attributes) {
         {
           name: "Robby",
-          email: "robby@gmail.com"
+          email: "rob@gmail.com"
         }
       }
 
@@ -100,7 +100,7 @@ RSpec.describe "/users", type: :request do
         user = User.create! valid_attributes
         patch user_url(user), params: { user: new_attributes }
         user.reload
-        skip("Add assertions for updated state")
+        expect(user.email).to eq(new_attributes[:email])
       end
 
       it "redirects to the user" do

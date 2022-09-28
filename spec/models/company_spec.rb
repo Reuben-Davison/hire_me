@@ -1,4 +1,6 @@
 require 'rails_helper'
+require 'csv'
+
 
 RSpec.describe Company, type: :model do 
     describe 'validations' do 

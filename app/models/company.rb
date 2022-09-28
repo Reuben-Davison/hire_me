@@ -1,4 +1,4 @@
-class Company < ApplicationRecord
+class Company < ActiveRecord::Base
     validates_presence_of :name
     validates_presence_of :location_city
     validates_presence_of :location_state
@@ -6,4 +6,6 @@ class Company < ApplicationRecord
     validates_presence_of :website
     validates_presence_of :industry
     validates_presence_of :company_size
+
+
 end

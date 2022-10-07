@@ -1,9 +1,9 @@
-<h1>Companies that hire out of Turing</h1>
 <p id="notice"><%= notice %></p>
-
-
-<table>
-  <thead>
+<br>
+<hr>
+<h1 class= "text-3xl">Companies that hire out of Turing</h1>
+<table class= "min-w-full">
+  <thead class= "bg-white border-b" >
     <tr>
       <th>Name</th>
       <th>City</th>
@@ -17,17 +17,19 @@
   </thead>
 
   <tbody>
-    <% @companies.each do |company| %>
-      <tr>
-        <td><%= company.name %></td>
-        <td><%= company.location_city %></td>
-        <td><%= company.location_state %></td>
-        <td><%= company.description %></td>
-        <td><%= company.website %></td>
-        <td><%= company.industry %></td>
-        <td><%= company.company_size %></td>
-      </tr>
-    <% end %>
+    <%= will_paginate @companies %>
+      <% @companies.each do |company| %>
+        <tr class="bg-gray-100 border-b">
+          <td><%= company.name %></td>
+          <td><%= company.location_city %></td>
+          <td><%= company.location_state %></td>
+          <td><%= company.description %></td>
+          <td><%= company.website %></td>
+          <td><%= company.industry %></td>
+          <td><%= company.company_size %></td>
+        </tr>
+      <% end %>
+    <%= will_paginate @companies %>
   </tbody>
 </table>
 

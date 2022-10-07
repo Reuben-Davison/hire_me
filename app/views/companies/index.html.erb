@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
-<br>
-<hr>
-<h1 class= "text-3xl">Companies that hire out of Turing</h1>
-<table class= "min-w-full">
+
+<h1 class="text-2xl font-semibold my-2">Companies that hire out of Turing</h1>
+
+<table>
   <thead class= "bg-white border-b" >
     <tr>
       <th>Name</th>
@@ -15,7 +15,6 @@
   </thead>
 
   <tbody>
-    <%= will_paginate @companies %>
       <% @companies.each do |company| %>
         <tr class="bg-gray-100 border-b">
           <td><a href="<%=company.website%>"><%= company.name %></a></td>
@@ -25,9 +24,9 @@
           <td><%= company.company_size %></td>
         </tr>
       <% end %>
-    <%= will_paginate @companies %>
   </tbody>
 </table>
+<%= will_paginate @companies %>
 
 <br>
 

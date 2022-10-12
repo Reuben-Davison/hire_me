@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="bg-gradient-to-t from-slate-500 px-4 py-4 shadow-xl ring-1 ring-gray-900/5 rounded-md">
-  <div class="text-4xl text-cyan-900 text-center  font-semibold font- my-2">Hire Me </div>
+  <div class="text-center font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-tl from-cyan-200 to-slate-800">Hire Me</div>
 <br>
   <div class="my-5 flex justify-end">
     <button class=" text-white text-xl rounded-full bg-cyan-900 shadow-lg mx-1 px-2 py-1 hover:opacity-50"><%= link_to 'Create account', new_user_path %></button>
@@ -21,14 +21,14 @@
     <div class="table-row-group">
       <% @companies.each do |company| %>
       <div class="table-row even:bg-stone-100 odd:bg-slate-50 text-center">
-        <div class="table-cell text-center font-bold text-cyan-700 hover:text-lg"><a href="<%=company.website%>"><%= company.name %></a></div>
+        <div class="table-cell underline text-center font-bold text-cyan-700 hover:text-lg"><a href="<%=company.website%>"><%= company.name %></a></div>
         <!-- all of this logic needs to be moved to model -->
         <% if company.location_city != company.location_state %> 
           <div class="table-cell"><%= company.location_city %>, <%= company.location_state %></div>
         <% else %>
           <div class="table-cell"><%= company.location_city %></div>
         <% end %>
-        <div class="table-cell"><%= company.description %></div>
+        <div class="table-cell p-3"><%= company.description %></div>
         <div class="table-cell"><%= company.industry %></div>
         <div class="table-cell"><%= company.company_size %></div>
       </div>

@@ -3,26 +3,31 @@
 <div class="bg-gradient-to-t from-slate-500 px-4 py-4 shadow-xl ring-1 ring-gray-900/5 rounded-md">
   <div class="text-4xl text-cyan-900 text-center  font-semibold font- my-2">Hire Me </div>
 <br>
-  <div>
-    <button class="text-right text-white text-xl rounded-full bg-cyan-900 shadow-lg px-2 py-1 hover:opacity-50"><%= link_to 'Create account', new_user_path %></button>
+  <div class="my-5 flex justify-end">
+    <button class=" text-white text-xl rounded-full bg-cyan-900 shadow-lg mx-1 px-2 py-1 hover:opacity-50"><%= link_to 'Create account', new_user_path %></button>
+    <button class=" text-white text-xl rounded-full bg-cyan-900 shadow-lg mx-1 px-2 py-1 hover:opacity-50"><%= link_to 'Sign In', new_user_path %></button>
   </div>
 
-  <br>
-  <div class="table w-full" >
+  <div class="table w-full bg-cyan-700 rounded-lg" >
     <div class="table-header-group">
-      <div class="table-row">
-        <div class="table-cell text-left">Name</div>
-        <div class="table-cell text-left">Location</div>
-        <div class="table-cell text-left">Description</div>
-        <div class="table-cell text-left">Industry</div>
-        <div class="table-cell text-left">Size</div>
+      <div class="table-row text-center text-white font-bold text-xl">
+        <div class="table-cell">Name</div>
+        <div class="table-cell">Location</div>
+        <div class="table-cell">Description</div>
+        <div class="table-cell">Industry</div>
+        <div class="table-cell">Size</div>
       </div>
     </div>
     <div class="table-row-group">
       <% @companies.each do |company| %>
-      <div class="table-row even:bg-stone-100 odd:bg-stone-50">
-        <div class="table-cell"><a href="<%=company.website%>"><%= company.name %></a></div>
-        <div class="table-cell"><%= company.location_city %>, <%= company.location_state %></div>
+      <div class="table-row even:bg-stone-100 odd:bg-slate-50 text-center">
+        <div class="table-cell text-center font-bold text-cyan-700 hover:text-lg"><a href="<%=company.website%>"><%= company.name %></a></div>
+        <!-- all of this logic needs to be moved to model -->
+        <% if company.location_city != company.location_state %> 
+          <div class="table-cell"><%= company.location_city %>, <%= company.location_state %></div>
+        <% else %>
+          <div class="table-cell"><%= company.location_city %></div>
+        <% end %>
         <div class="table-cell"><%= company.description %></div>
         <div class="table-cell"><%= company.industry %></div>
         <div class="table-cell"><%= company.company_size %></div>

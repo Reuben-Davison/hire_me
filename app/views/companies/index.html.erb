@@ -2,10 +2,16 @@
 
 <div class="bg-gradient-to-t from-slate-500 px-4 py-4 shadow-xl ring-1 ring-gray-900/5 rounded-md">
   <div class="text-center font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-tl from-cyan-200 to-slate-800">Hire Me</div>
-<br>
+  <br>
+  <p class="text-center">Thank you Robyn for compiling this information.  <br>
+    This project's purpose is to allow boot camp grads an easy way of accessing companies that hire directly post graduation. <br> 
+    Feel free to add to the list. <br>
+    Signing up will allow you to access a wish list and applied to companies.   <br>
+  
+   </p>
   <div class="my-5 flex justify-end">
-    <button class=" text-white text-xl rounded-full bg-cyan-900 shadow-lg mx-1 px-2 py-1 hover:opacity-50"><%= link_to 'Create account', new_user_path %></button>
-    <button class=" text-white text-xl rounded-full bg-cyan-900 shadow-lg mx-1 px-2 py-1 hover:opacity-50"><%= link_to 'Sign In', new_user_path %></button>
+    <button class=" text-white text-xl rounded-full bg-cyan-700 shadow-lg mx-1 px-2 py-1 hover:opacity-50"><%= link_to 'Create account', new_user_path %></button>
+    <button class=" text-white text-xl rounded-full bg-cyan-700 shadow-lg mx-1 px-2 py-1 hover:opacity-50"><%= link_to 'Sign In', new_user_path %></button>
   </div>
 
   <div class="table w-full bg-cyan-700 rounded-lg" >
@@ -14,13 +20,23 @@
         <div class="table-cell">Name</div>
         <div class="table-cell">Location</div>
         <div class="table-cell">Description</div>
-        <div class="table-cell">Industry</div>
+        <div class="table-cell">
+          <button class=" peer p-1 rounded-lg border-2 ">Industry &darr;</button>
+          <!-- not sure why justify center is not working for drop down meno -->
+            <div class="text-center hidden absolute peer-hover:flex hover:flex rounded-md flex-col text-lg justify-center bg-cyan-800/95 drop-shadow-lg">
+              <div><a class=" p-1 rounded-md hover:bg-cyan-900" href="#">Tech</a></div>
+              <div><a class=" p-1 rounded-md hover:bg-cyan-900" href="#">Banking</a></div>
+              <div><a class=" p-1 rounded-md hover:bg-cyan-900" href="#">Blockchain</a></div>
+              <div><a class=" p-1 rounded-md hover:bg-cyan-900" href="#">Childcare</a></div>
+              <div><a class=" p-1 rounded-md hover:bg-cyan-900" href="#">Childcare</a></div>
+            </div>
+        </div>
         <div class="table-cell">Size</div>
       </div>
     </div>
     <div class="table-row-group">
       <% @companies.each do |company| %>
-      <div class="table-row even:bg-stone-100 odd:bg-slate-50 text-center">
+      <div class="table-row even:bg-slate-100 odd:bg-slate-50 text-center">
         <div class="table-cell underline text-center font-bold text-cyan-700 hover:text-lg"><a href="<%=company.website%>"><%= company.name %></a></div>
         <!-- all of this logic needs to be moved to model -->
         <% if company.location_city != company.location_state %> 

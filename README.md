@@ -11,3 +11,6 @@ To allow bootcamp graduats easy access to companies that have hired directly fro
 - Run ```bin/dev```
 - Navigate to localhost:3000
 
+
+### Contributing 
+- Make a pull request on a new branch that is named after the ticket
